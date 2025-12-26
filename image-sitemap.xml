@@ -64,6 +64,12 @@
             <image:title>DVIP Game Small Icon 48x48</image:title>
             <image:caption>DVIP Game APK small icon for Android notification and quick settings</image:caption>
         </image:image>
+
+        <image:image>
+            <image:loc>https://dvip-apk.com/favicon.ico</image:loc>
+            <image:title>DVIP Game favicon  48x48</image:title>
+            <image:caption>DVIP Game APK small icon for Android notification and quick settings</image:caption>
+        </image:image>
         
     </url>
     
