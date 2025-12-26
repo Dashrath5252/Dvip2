@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- ONLY HOME PAGE - because you only have index.html -->
-  <url>
-    <loc>https://dvip-apk.com</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    
+    <!-- Main Page -->
+    <url>
+        <loc>https://dvip-apk.com/</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        
+        <!-- Image References for Main Page -->
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvipicon512.webp</image:loc>
+            <image:title>DVIP Game APK Download - Free Mobile Gaming</image:title>
+            <image:caption>Download DVIP Game APK for Android - 100+ free games with bonus ₹500</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://dvip-apk.com/terms</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvipicon180.webp</image:loc>
+            <image:title>DVIP Game Icon</image:title>
+            <image:caption>DVIP Game mobile app icon for Android APK download</image:caption>
+            <image:geo_location>India</image:geo_location>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvipicon48.webp</image:loc>
+            <image:title>DVIP Small Icon</image:title>
+            <image:caption>DVIP Game small icon for Android home screen</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvip1.webp</image:loc>
+            <image:title>DVIP Slot Game APK Screenshot</image:title>
+            <image:caption>DVIP Game APK - Slot machine game screenshot with bonus features</image:caption>
+            <image:license>https://dvip-apk.com/terms</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvip2.webp</image:loc>
+            <image:title>DVIP Poker Game APK</image:title>
+            <image:caption>DVIP Poker Game APK - Multiplayer poker for Android</image:caption>
+            <image:license>https://dvip-apk.com/terms</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvip3.webp</image:loc>
+            <image:title>DVIP Fishing Game APK</image:title>
+            <image:caption>DVIP Fishing Game APK - Arcade fishing with big bonuses</image:caption>
+            <image:license>https://dvip-apk.com/terms</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvip4.webp</image:loc>
+            <image:title>DVIP Roulette Game APK</image:title>
+            <image:caption>DVIP Roulette Game APK - Classic casino roulette for Android</image:caption>
+            <image:license>https://dvip-apk.com/terms</image:license>
+        </image:image>
+        
+    </url>
+    
 </urlset>
