@@ -2,66 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     
+    <!-- Image Sitemap Entry 1 -->
     <url>
-        <loc>https://www.yourdomain.com/</loc>
-        <lastmod>2025-12-26</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-        
-        <!-- Favicon Images -->
-        <image:image>
-            <image:loc>https://www.yourdomain.com/dvipicon48.webp</image:loc>
-            <image:title>DVIP Game Icon 48x48</image:title>
-            <image:caption>DVIP Game mobile app icon small size</image:caption>
-            <image:geo_location>India</image:geo_location>
-            <image:license>https://www.yourdomain.com/license</image:license>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.yourdomain.com/dvipicon180.webp</image:loc>
-            <image:title>DVIP Game Icon 180x180</image:title>
-            <image:caption>DVIP Game mobile app icon medium size</image:caption>
-            <image:geo_location>India</image:geo_location>
-        </image:image>
+        <loc>https://dvip-apk.com/</loc>
         
         <!-- Main App Icon -->
         <image:image>
-            <image:loc>https://www.yourdomain.com/dvipicon512.webp</image:loc>
-            <image:title>DVIP Game App Icon Download</image:title>
-            <image:caption>Download DVIP Game - Free mobile gaming app with 100+ games</image:caption>
-            <image:license>https://www.yourdomain.com/license</image:license>
+            <image:loc>https://dvip-apk.com/dvipicon512.webp</image:loc>
+            <image:title>DVIP Game APK Download 2025 Latest Version</image:title>
+            <image:caption>Free download DVIP Game APK for Android - Get ₹500 welcome bonus - Entertainment gaming platform with slots, poker, fishing, and roulette games</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://dvip-apk.com/license</image:license>
         </image:image>
         
         <!-- Game Screenshot 1 -->
         <image:image>
-            <image:loc>https://www.yourdomain.com/dvip1.webp</image:loc>
-            <image:title>DVIP Slot Game Screenshot</image:title>
-            <image:caption>DVIP Game - Free Casino Slot Game with bonus features</image:caption>
-            <image:license>https://www.yourdomain.com/license</image:license>
+            <image:loc>https://dvip-apk.com/dvip1.webp</image:loc>
+            <image:title>DVIP Slot Machine Game Free Download</image:title>
+            <image:caption>DVIP Game APK Slot Machine - Spin and win with free bonus coins - No real money gambling - Entertainment only</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://dvip-apk.com/license</image:license>
         </image:image>
         
         <!-- Game Screenshot 2 -->
         <image:image>
-            <image:loc>https://www.yourdomain.com/dvip2.webp</image:loc>
-            <image:title>DVIP Poker Game Multiplayer</image:title>
-            <image:caption>DVIP Poker Game - Play multiplayer poker online</image:caption>
-            <image:license>https://www.yourdomain.com/license</image:license>
+            <image:loc>https://dvip-apk.com/dvip2.webp</image:loc>
+            <image:title>DVIP Poker Game Multiplayer APK</image:title>
+            <image:caption>DVIP Poker Game APK - Play Texas Hold'em with friends - Multiplayer poker game for Android - Free download</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://dvip-apk.com/license</image:license>
         </image:image>
         
         <!-- Game Screenshot 3 -->
         <image:image>
-            <image:loc>https://www.yourdomain.com/dvip3.webp</image:loc>
-            <image:title>DVIP Fishing Game Bonus</image:title>
-            <image:caption>DVIP Fishing Game - Win big bonuses in arcade fishing game</image:caption>
-            <image:license>https://www.yourdomain.com/license</image:license>
+            <image:loc>https://dvip-apk.com/dvip3.webp</image:loc>
+            <image:title>DVIP Fishing Game Bonus Round</image:title>
+            <image:caption>DVIP Fishing Game APK - Catch fish and earn bonus points - Arcade style fishing game - Free Android game download</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://dvip-apk.com/license</image:license>
         </image:image>
         
         <!-- Game Screenshot 4 -->
         <image:image>
-            <image:loc>https://www.yourdomain.com/dvip4.webp</image:loc>
-            <image:title>DVIP Roulette Game Classic</image:title>
-            <image:caption>DVIP Roulette Game - Classic casino roulette experience</image:caption>
-            <image:license>https://www.yourdomain.com/license</image:license>
+            <image:loc>https://dvip-apk.com/dvip4.webp</image:loc>
+            <image:title>DVIP Roulette Casino Game APK</image:title>
+            <image:caption>DVIP Roulette Game APK - Classic European roulette - Casino entertainment game - Free to play on Android</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://dvip-apk.com/license</image:license>
+        </image:image>
+        
+        <!-- Favicon Images -->
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvipicon180.webp</image:loc>
+            <image:title>DVIP Game Icon 180x180</image:title>
+            <image:caption>DVIP Game APK icon for Android app - Medium size for mobile devices</image:caption>
+            <image:geo_location>India</image:geo_location>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://dvip-apk.com/dvipicon48.webp</image:loc>
+            <image:title>DVIP Game Small Icon 48x48</image:title>
+            <image:caption>DVIP Game APK small icon for Android notification and quick settings</image:caption>
         </image:image>
         
     </url>
