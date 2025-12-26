@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <url>
+        <loc>https://www.yourdomain.com/</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        
+        <!-- Favicon Images -->
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvipicon48.webp</image:loc>
+            <image:title>DVIP Game Icon 48x48</image:title>
+            <image:caption>DVIP Game mobile app icon small size</image:caption>
+            <image:geo_location>India</image:geo_location>
+            <image:license>https://www.yourdomain.com/license</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvipicon180.webp</image:loc>
+            <image:title>DVIP Game Icon 180x180</image:title>
+            <image:caption>DVIP Game mobile app icon medium size</image:caption>
+            <image:geo_location>India</image:geo_location>
+        </image:image>
+        
+        <!-- Main App Icon -->
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvipicon512.webp</image:loc>
+            <image:title>DVIP Game App Icon Download</image:title>
+            <image:caption>Download DVIP Game - Free mobile gaming app with 100+ games</image:caption>
+            <image:license>https://www.yourdomain.com/license</image:license>
+        </image:image>
+        
+        <!-- Game Screenshot 1 -->
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvip1.webp</image:loc>
+            <image:title>DVIP Slot Game Screenshot</image:title>
+            <image:caption>DVIP Game - Free Casino Slot Game with bonus features</image:caption>
+            <image:license>https://www.yourdomain.com/license</image:license>
+        </image:image>
+        
+        <!-- Game Screenshot 2 -->
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvip2.webp</image:loc>
+            <image:title>DVIP Poker Game Multiplayer</image:title>
+            <image:caption>DVIP Poker Game - Play multiplayer poker online</image:caption>
+            <image:license>https://www.yourdomain.com/license</image:license>
+        </image:image>
+        
+        <!-- Game Screenshot 3 -->
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvip3.webp</image:loc>
+            <image:title>DVIP Fishing Game Bonus</image:title>
+            <image:caption>DVIP Fishing Game - Win big bonuses in arcade fishing game</image:caption>
+            <image:license>https://www.yourdomain.com/license</image:license>
+        </image:image>
+        
+        <!-- Game Screenshot 4 -->
+        <image:image>
+            <image:loc>https://www.yourdomain.com/dvip4.webp</image:loc>
+            <image:title>DVIP Roulette Game Classic</image:title>
+            <image:caption>DVIP Roulette Game - Classic casino roulette experience</image:caption>
+            <image:license>https://www.yourdomain.com/license</image:license>
+        </image:image>
+        
+    </url>
+    
+</urlset>
