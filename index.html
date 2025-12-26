@@ -15,12 +15,8 @@
     <!-- SEO Meta Tags -->
     <title>DVIP Game - Download and get bonus ₹500</title>
     <meta name="description" content="dvip Game offers exciting slot games for entertainment. Play fun games online. Download now and enjoy amazing gaming experience.download dvip game now.">
-    <meta name="keywords" content="dvip new update, update dvip,new version dvip,all new game dvip,dvip game, dvip games, dvip game,dvip apk,dvip free,dvip download ,dvipgame apk,dvip,how to download dvip,dvip earning app,2026 best earning app,dvip new version,best earning app 2026,new dvip,dvip game download,DVIP game free download for Android,DVIP game latest version,DVIP game review,How to play DVIP game,DVIP game tricks and tips,Is DVIP game safe?,DVIP game customer support,dvip game real or fake,dvip fake game,real dvip ,dvip apk,letest dvip,new dvip,free dvip,real or fake dvip, download dvip, download dvip game, download dvip games, download new dvip, download new dvip game, download dvip app, download dvip apk,dvip apk download">
     <meta name="author" content="dvip Game">
 
-    
-
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -47,7 +43,7 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        /* Header - NO FLOATING */
         .main-header {
             background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(10px);
@@ -130,8 +126,8 @@
             margin-right: auto;
         }
         
-        /* App Icon Section - NO FLOATING */
-        .app-icon-section {
+        /* Hero App Icon - WITH FLOATING */
+        .floating-app-icon {
             width: 120px;
             height: 120px;
             margin: 0 auto 40px;
@@ -139,7 +135,7 @@
             z-index: 2;
         }
         
-        .icon-container {
+        .floating-icon-container {
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, #ff9e00, #ffd166);
@@ -150,28 +146,19 @@
             overflow: hidden;
             border: 5px solid #ffd166;
             box-shadow: 0 10px 30px rgba(255, 158, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
         }
         
-        .icon-container img {
+        .floating-icon-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        /* Floating Animation - REMOVED FROM APP ICON */
+        /* Floating Animation - For Hero Icon Only */
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-                box-shadow: 0 10px 20px rgba(255, 158, 0, 0.3);
-            }
-            50% {
-                transform: translateY(-15px);
-                box-shadow: 0 20px 40px rgba(255, 158, 0, 0.4);
-            }
-            100% {
-                transform: translateY(0px);
-                box-shadow: 0 10px 20px rgba(255, 158, 0, 0.3);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
         
         .game-stats {
@@ -235,7 +222,7 @@
         }
         
         /* ======================= */
-        /* NEW CLEAN IMAGE GALLERY */
+        /* RESPONSIVE IMAGE GALLERY */
         /* ======================= */
         .gallery-section {
             padding: 60px 0 40px;
@@ -251,35 +238,29 @@
             font-weight: 700;
         }
         
-        /* First Row - 2 Images */
-        .image-row-1 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-        
-        /* Second Row - 2 Images */
-        .image-row-2 {
+        /* Image Grid - 2x2 Layout */
+        .image-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
         
-        /* Clean Image Card */
+        /* Clean Image Card with 9:16 Aspect Ratio */
         .clean-image-card {
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.4s ease;
-            height: 300px;
             border: 3px solid rgba(255, 222, 102, 0.2);
             background: rgba(255, 255, 255, 0.02);
+            /* 9:16 Aspect Ratio */
+            aspect-ratio: 9/16;
+            max-height: 500px;
         }
         
         .clean-image-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px);
             border-color: #ffd166;
             box-shadow: 0 20px 40px rgba(255, 158, 0, 0.3);
         }
@@ -292,46 +273,47 @@
         }
         
         .clean-image-card:hover .clean-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
-        /* Badges - Larger Size */
+        /* Improved Badges - Mobile Friendly */
         .image-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 25px;
-            border-radius: 30px;
+            top: 15px;
+            right: 15px;
+            padding: 8px 18px;
+            border-radius: 20px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             z-index: 3;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             backdrop-filter: blur(10px);
             border: 2px solid;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         .badge-hot {
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(255, 87, 87, 0.9));
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(255, 87, 87, 0.95));
             color: white;
             border-color: #ff6b6b;
         }
         
         .badge-new {
-            background: linear-gradient(135deg, rgba(255, 158, 0, 0.9), rgba(255, 209, 102, 0.9));
+            background: linear-gradient(135deg, rgba(255, 158, 0, 0.95), rgba(255, 209, 102, 0.95));
             color: #0d1b2a;
             border-color: #ffd166;
         }
         
         .badge-popular {
-            background: linear-gradient(135deg, rgba(78, 205, 196, 0.9), rgba(86, 227, 217, 0.9));
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.95), rgba(86, 227, 217, 0.95));
             color: #0d1b2a;
             border-color: #4ecdc4;
         }
         
         .badge-trending {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(167, 139, 250, 0.9));
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(167, 139, 250, 0.95));
             color: white;
             border-color: #8b5cf6;
         }
@@ -556,13 +538,28 @@
             font-size: 14px;
         }
         
-        /* Responsive Design */
+        /* ======================= */
+        /* RESPONSIVE DESIGN */
+        /* ======================= */
+        
+        /* Tablet View */
+        @media (max-width: 992px) {
+            .image-grid {
+                gap: 20px;
+            }
+            
+            .clean-image-card {
+                border-radius: 12px;
+            }
+        }
+        
+        /* Mobile View - 2 images per row */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 32px;
             }
             
-            .app-icon-section {
+            .floating-app-icon {
                 width: 100px;
                 height: 100px;
             }
@@ -587,29 +584,40 @@
             
             .gallery-title {
                 font-size: 28px;
+                margin-bottom: 30px;
             }
             
-            .image-row-1,
-            .image-row-2 {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
             .clean-image-card {
-                height: 250px;
-                max-width: 400px;
-                margin: 0 auto;
+                border-radius: 10px;
+                border-width: 2px;
             }
             
             .image-badge {
-                padding: 8px 20px;
-                font-size: 14px;
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 12px;
+                border-width: 1.5px;
+            }
+            
+            .section-title {
+                font-size: 32px;
             }
         }
         
+        /* Small Mobile View */
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
             }
             
             .section-title {
@@ -627,7 +635,7 @@
                 text-align: center;
             }
             
-            .app-icon-section {
+            .floating-app-icon {
                 width: 90px;
                 height: 90px;
             }
@@ -636,25 +644,59 @@
                 font-size: 24px;
             }
             
+            .image-grid {
+                gap: 12px;
+            }
+            
             .clean-image-card {
-                height: 220px;
+                border-radius: 8px;
             }
             
             .image-badge {
-                padding: 6px 15px;
-                font-size: 13px;
+                padding: 5px 10px;
+                font-size: 11px;
+                letter-spacing: 0.3px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
+            }
+            
+            .stat-box {
+                min-width: 110px;
+                padding: 12px;
+            }
+        }
+        
+        /* Extra Small Mobile */
+        @media (max-width: 360px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .clean-image-card {
+                border-radius: 6px;
+            }
+            
+            .hero-title {
+                font-size: 24px;
+            }
+            
+            .gallery-title {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - NO FLOATING -->
     <header class="main-header">
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
                     <div class="app-icon">
-                        <img src="dvipicon1.jpg" loading="lazy" alt="dvip Game download">
+                        <img src="dvipicon1.jpg" loading="lazy" alt="DVIP Game download">
                     </div>
                     <div>
                         <div class="logo-text">DVIP GAME</div>
@@ -672,10 +714,10 @@
                 <h1 class="hero-title">Experience Amazing Mobile Games</h1>
                 <p class="hero-subtitle">Join millions of players enjoying dvip Game's collection of fun and exciting games. Pure entertainment, anytime, anywhere.</p>
                 
-                <!-- App Icon - NO FLOATING -->
-                <div class="app-icon-section">
-                    <div class="icon-container">
-                        <img src="dvipicon1.jpg" alt="dvip Game download" fetchpriority="high">
+                <!-- Hero App Icon - WITH FLOATING -->
+                <div class="floating-app-icon">
+                    <div class="floating-icon-container">
+                        <img src="dvipicon1.jpg" alt="DVIP Game download" fetchpriority="high">
                     </div>
                 </div>
 
@@ -706,12 +748,12 @@
                     </div>
                 </div>
                 
-                <!-- NEW: Clean Image Gallery (2x2 Grid) -->
+                <!-- Responsive Image Gallery (2x2 Grid) -->
                 <div class="gallery-section">
                     <h2 class="gallery-title">DVIP Game Gallery</h2>
                     
-                    <!-- First Row - 2 Images -->
-                    <div class="image-row-1">
+                    <!-- Image Grid - 2x2 Layout -->
+                    <div class="image-grid">
                         <!-- Image 1 -->
                         <div class="clean-image-card">
                             <img src="dvip1.jpg" loading="lazy" alt="DVIP Slot Game - Free Casino Game" class="clean-image">
@@ -723,10 +765,7 @@
                             <img src="dvip2.jpg" loading="lazy" alt="DVIP Poker Game - Multiplayer Poker" class="clean-image">
                             <div class="image-badge badge-new">NEW</div>
                         </div>
-                    </div>
-                    
-                    <!-- Second Row - 2 Images -->
-                    <div class="image-row-2">
+                        
                         <!-- Image 3 -->
                         <div class="clean-image-card">
                             <img src="dvip3.jpg" loading="lazy" alt="DVIP Fishing Game - Win Big Bonuses" class="clean-image">
@@ -1015,7 +1054,7 @@
         // Download Analytics
         document.querySelectorAll('.download-btn').forEach(button => {
             button.addEventListener('click', function() {
-                console.log('dvip Game download initiated');
+                console.log('DVIP Game download initiated');
                 // Can add analytics tracking here
             });
         });
@@ -1025,13 +1064,13 @@
             const img = card.querySelector('.clean-image');
             
             card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.transform = 'translateY(-10px)';
                 card.style.boxShadow = '0 20px 40px rgba(255, 158, 0, 0.3)';
-                if (img) img.style.transform = 'scale(1.1)';
+                if (img) img.style.transform = 'scale(1.05)';
             });
             
             card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
+                card.style.transform = 'translateY(0)';
                 card.style.boxShadow = 'none';
                 if (img) img.style.transform = 'scale(1)';
             });
