@@ -1,72 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
-    <!-- Main Page -->
+    <!-- Home Page -->
     <url>
-        <loc>https://www.dvip.pro/</loc>
-        <lastmod>2025-12-26</lastmod>
+        <loc>https://dvip.pro/</loc>
+        <lastmod>2024-12-26</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
-        
-        <!-- Image References for Main Page -->
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvipicon512.webp</image:loc>
-            <image:title>DVIP Game APK Download - Free Mobile Gaming</image:title>
-            <image:caption>Download DVIP Game APK for Android - 100+ free games with bonus ₹500</image:caption>
-            <image:geo_location>India</image:geo_location>
-            <image:license>https://www.dvip.pro/terms</image:license>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvipicon180.webp</image:loc>
-            <image:title>DVIP Game Icon</image:title>
-            <image:caption>DVIP Game mobile app icon for Android APK download</image:caption>
-            <image:geo_location>India</image:geo_location>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvipicon48.webp</image:loc>
-            <image:title>DVIP Small Icon</image:title>
-            <image:caption>DVIP Game small icon for Android home screen</image:caption>
-        </image:image>
-
-        <image:image>
-            <image:loc>https://www.dvip.pro/favicon.ico</image:loc>
-            <image:title>DVIP Game favicon  48x48</image:title>
-            <image:caption>DVIP Game APK small favicon for website</image:caption>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvip1.webp</image:loc>
-            <image:title>DVIP Slot Game APK Screenshot</image:title>
-            <image:caption>DVIP Game APK - Slot machine game screenshot with bonus features</image:caption>
-            <image:license>https://www.dvip.pro/terms</image:license>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvip2.webp</image:loc>
-            <image:title>DVIP  Game APK Bonus</image:title>
-            <image:caption>DVIP Game APK - download and get bonus 500 rupees</image:caption>
-            <image:license>https://www.dvip.pro/terms</image:license>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvip3.webp</image:loc>
-            <image:title>DVIP Game APK high wins</image:title>
-            <image:caption>DVIP Game APK - high win and play games </image:caption>
-            <image:license>https://www.dvip.pro/terms</image:license>
-        </image:image>
-        
-        <image:image>
-            <image:loc>https://www.dvip.pro/dvip4.webp</image:loc>
-            <image:title>DVIP Game APK all games</image:title>
-            <image:caption>DVIP game lots of free game play and win huge</image:caption>
-            <image:license>https://www.dvip.pro/terms</image:license>
-        </image:image>
-        
     </url>
-    
 </urlset>
