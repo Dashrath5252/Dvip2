@@ -2,8 +2,8 @@ User-agent: *
 Allow: /
 
 # Sitemap link
-Sitemap: https://dvip-apk.com/sitemap.xml
-Sitemap: https://dvip-apk.com/image-sitemap.xml
+Sitemap: https://www.dvip.pro/sitemap.xml
+Sitemap: https://www.dvip.pro/image-sitemap.xml
 
 # Image crawling
 Allow: /*.jpg$
