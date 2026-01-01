@@ -1,0 +1,34 @@
+name: 🔄 Optimize Existing Images Only
+on:
+  workflow_dispatch:  # SIRF MANUAL RUN
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: 📦 Install sharp
+        run: npm install sharp
+      
+      - name: 🎯 Optimize EXISTING images
+        run: node optimize.js
+      
+      - name: 📤 Auto commit
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add *_google.png *_optimized.webp *_thumb.webp
+          git commit -m "🤖 Optimized existing images" || echo "No changes"
+          git push
