@@ -1,0 +1,69 @@
+name: Generate Responsive Images from Default
+
+on:
+  push:
+    paths:
+      - 'dvip1.webp'
+      - 'dvip2.webp'
+      - 'dvip3.webp'
+      - 'dvip4.webp'
+      - 'dvipicon*.webp'
+      - '.github/workflows/generate-images.yml'
+  workflow_dispatch:  # Manual trigger
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  generate-responsive-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install Pillow
+        pip install pillow-avif-plugin
+    
+    - name: Create directory structure
+      run: |
+        # Create main directories
+        mkdir -p dvip1 dvip2 dvip3 dvip4 dvipicon
+        
+        # Create resized subdirectories in each
+        mkdir -p dvip1/resized dvip2/resized dvip3/resized dvip4/resized dvipicon/resized
+        
+        # Create sizes directory for HTML output
+        mkdir -p sizes
+        
+        # Copy default images to respective folders
+        cp dvip1.webp dvip1/ 2>/dev/null || true
+        cp dvip2.webp dvip2/ 2>/dev/null || true
+        cp dvip3.webp dvip3/ 2>/dev/null || true
+        cp dvip4.webp dvip4/ 2>/dev/null || true
+        cp dvipicon*.webp dvipicon/ 2>/dev/null || true
+    
+    - name: Run image generation script
+      run: |
+        python scripts/generate-from-default.py
+    
+    - name: Generate HTML with srcset
+      run: |
+        python scripts/generate-html.py
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-generate responsive images [skip ci]"
+        git push
