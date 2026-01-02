@@ -1,0 +1,105 @@
+name: Process Images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install Pillow
+      run: pip install Pillow
+    
+    - name: Create folders
+      run: |
+        mkdir -p dvip1/resized dvip2/resized dvip3/resized dvip4/resized dvipicon/resized
+    
+    - name: Process all images
+      run: |
+        python3 -c "
+from PIL import Image
+import os
+
+# Process dvip1
+if os.path.exists('dvip1.webp'):
+    img = Image.open('dvip1.webp')
+    for w in [320, 640, 1024]:
+        ratio = w / img.width
+        h = int(img.height * ratio)
+        resized = img.resize((w, h))
+        os.makedirs('dvip1/resized', exist_ok=True)
+        resized.save(f'dvip1/resized/dvip1-{w}w.webp', 'WEBP', quality=85)
+        print(f'✓ dvip1-{w}w.webp')
+    img.close()
+
+# Process dvip2  
+if os.path.exists('dvip2.webp'):
+    img = Image.open('dvip2.webp')
+    for w in [320, 640, 1024]:
+        ratio = w / img.width
+        h = int(img.height * ratio)
+        resized = img.resize((w, h))
+        os.makedirs('dvip2/resized', exist_ok=True)
+        resized.save(f'dvip2/resized/dvip2-{w}w.webp', 'WEBP', quality=85)
+        print(f'✓ dvip2-{w}w.webp')
+    img.close()
+
+# Process dvip3
+if os.path.exists('dvip3.webp'):
+    img = Image.open('dvip3.webp')
+    for w in [320, 640, 1024]:
+        ratio = w / img.width
+        h = int(img.height * ratio)
+        resized = img.resize((w, h))
+        os.makedirs('dvip3/resized', exist_ok=True)
+        resized.save(f'dvip3/resized/dvip3-{w}w.webp', 'WEBP', quality=85)
+        print(f'✓ dvip3-{w}w.webp')
+    img.close()
+
+# Process dvip4
+if os.path.exists('dvip4.webp'):
+    img = Image.open('dvip4.webp')
+    for w in [320, 640, 1024]:
+        ratio = w / img.width
+        h = int(img.height * ratio)
+        resized = img.resize((w, h))
+        os.makedirs('dvip4/resized', exist_ok=True)
+        resized.save(f'dvip4/resized/dvip4-{w}w.webp', 'WEBP', quality=85)
+        print(f'✓ dvip4-{w}w.webp')
+    img.close()
+
+# Icons already exist - just copy to resized folder
+for icon in ['48', '180', '512']:
+    src = f'dvipicon{icon}.webp'
+    if os.path.exists(src):
+        os.makedirs('dvipicon/resized', exist_ok=True)
+        import shutil
+        shutil.copy2(src, f'dvipicon/resized/{src}')
+        print(f'✓ {src} copied')
+
+print('✅ All done!')
+"
+    
+    - name: Show output
+      run: |
+        echo "=== Generated Files ==="
+        find . -name "*.webp" -type f | grep resized
+    
+    - name: Commit
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Add resized images" || echo "No changes"
+        git push || echo "Push failed"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
