@@ -1,0 +1,32 @@
+{
+  "name": "dvip-srcset-generator",
+  "version": "1.0.0",
+  "description": "Generate WebP images with proper naming and srcset for DVIP website",
+  "main": "generate-image.js",
+  "scripts": {
+    "generate": "node generate-image.js",
+    "process": "node process-images.js",
+    "process-all": "node process-images.js --all",
+    "clean": "rm -rf output/* && rm -rf images/*",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "webp",
+    "srcset",
+    "image-optimization",
+    "dvip",
+    "responsive-images"
+  ],
+  "author": "DVIP Team",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.33.2",
+    "yaml": "^2.3.4",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "glob": "^10.3.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}
