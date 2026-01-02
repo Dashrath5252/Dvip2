@@ -1,0 +1,158 @@
+name: Image Processor
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dvip1.webp'
+      - 'dvip2.webp'
+      - 'dvip3.webp'
+      - 'dvip4.webp'
+      - 'dvipicon*.webp'
+  workflow_dispatch:
+
+jobs:
+  process-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install Pillow
+      run: pip install Pillow
+    
+    - name: Create folders
+      run: |
+        mkdir -p dvip1/resized
+        mkdir -p dvip2/resized
+        mkdir -p dvip3/resized
+        mkdir -p dvip4/resized
+        mkdir -p dvipicon/resized
+        mkdir -p html-templates
+    
+    - name: Run image processor
+      run: |
+        python3 << 'EOF'
+# IMAGE PROCESSOR SCRIPT
+from pathlib import Path
+from PIL import Image
+import json
+
+print("Processing images...")
+
+sizes = [320, 480, 640, 768, 1024, 1280, 1536]
+icon_sizes = [48, 72, 96, 128, 180, 192, 256, 512]
+
+folders = ['dvip1', 'dvip2', 'dvip3', 'dvip4', 'dvipicon']
+
+for folder in folders:
+    print(f"\n{folder}:")
+    
+    if folder == 'dvipicon':
+        source = 'dvipicon512.webp'
+        use_sizes = icon_sizes
+    else:
+        source = f'{folder}.webp'
+        use_sizes = sizes
+    
+    if not Path(source).exists():
+        print(f"  Missing: {source}")
+        continue
+    
+    img = Image.open(source)
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
+    
+    for size in use_sizes:
+        if folder == 'dvipicon':
+            w = h = size
+            name = f'dvipicon{size}.webp'
+        else:
+            if size > img.width:
+                continue
+            ratio = size / img.width
+            w = size
+            h = int(img.height * ratio)
+            name = f'{folder}-{size}w.webp'
+        
+        resized = img.resize((w, h), Image.Resampling.LANCZOS)
+        out = Path(folder) / 'resized' / name
+        resized.save(out, 'WEBP', quality=85)
+        print(f"  Created: {name}")
+    
+    img.close()
+
+print("\nDone!")
+EOF
+    
+    - name: Create HTML templates
+      run: |
+        python3 << 'EOF'
+# HTML GENERATOR SCRIPT
+from pathlib import Path
+
+print("Creating HTML...")
+
+folders = ['dvip1', 'dvip2', 'dvip3', 'dvip4', 'dvipicon']
+
+for folder in folders:
+    resized = Path(folder) / 'resized'
+    if not resized.exists():
+        continue
+    
+    images = list(resized.glob('*.webp'))
+    if not images:
+        continue
+    
+    srcset = []
+    for img in images:
+        name = img.name
+        if 'dvipicon' in name:
+            if '48' in name:
+                size = '48'
+            elif '180' in name:
+                size = '180'
+            elif '512' in name:
+                size = '512'
+            else:
+                continue
+        elif 'w' in name:
+            size = name.split('-')[-1].replace('w.webp', '')
+        else:
+            continue
+        
+        srcset.append(f'/{folder}/resized/{name} {size}w')
+    
+    if not srcset:
+        continue
+    
+    if folder == 'dvipicon':
+        html = f'<img src="/{folder}/dvipicon512.webp" srcset="{", ".join(srcset)}" sizes="48px" alt="icon">'
+    else:
+        html = f'<img src="/{folder}/resized/{folder}-640w.webp" srcset="{", ".join(srcset)}" sizes="100vw" alt="{folder}">'
+    
+    out = Path('html-templates') / f'{folder}.html'
+    out.write_text(html)
+    print(f"Created: {out}")
+
+print("HTML done!")
+EOF
+    
+    - name: Commit changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        if git diff --cached --quiet; then
+          echo "No changes"
+        else
+          git commit -m "Update images"
+          git push
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
