@@ -21,17 +21,12 @@ jobs:
     
     - name: Create directories
       run: |
-        echo "📁 Creating directories..."
         mkdir -p dvip1/resized dvip2/resized dvip3/resized dvip4/resized dvipicon/resized
         mkdir -p sizes
-        echo "✅ Directories created"
     
-    - name: Generate responsive images
+    - name: Create Python script file
       run: |
-        echo "🚀 Generating responsive images..."
-        
-        # Create and run Python script
-        python3 -c "
+        cat << 'SCRIPT_EOF' > generate.py
 import os
 import sys
 from pathlib import Path
@@ -39,16 +34,16 @@ from PIL import Image
 import json
 import shutil
 
-print('📁 Starting image generation...')
+print("📁 Starting image generation...")
 
 # Define sizes
 REGULAR_SIZES = [320, 480, 640, 768, 1024, 1280, 1536]
 ICON_SIZES = [48, 72, 96, 128, 180, 192, 256, 512]
 
-# Map directories to source images
+# Map directories
 directories = {
     'dvip1': 'dvip1.webp',
-    'dvip2': 'dvip2.webp', 
+    'dvip2': 'dvip2.webp',
     'dvip3': 'dvip3.webp',
     'dvip4': 'dvip4.webp',
     'dvipicon': 'dvipicon512.webp'
@@ -57,11 +52,11 @@ directories = {
 all_generated = {}
 
 for dir_name, source_file in directories.items():
-    print(f'\\n📁 Processing {dir_name}...')
+    print(f"\n📁 Processing {dir_name}...")
     
     source_path = Path(source_file)
     if not source_path.exists():
-        print(f'  ⚠️  {source_file} not found')
+        print(f"  ⚠️  {source_file} not found")
         continue
     
     # Copy original to directory
@@ -69,7 +64,7 @@ for dir_name, source_file in directories.items():
     dest_path = Path(dir_name) / source_file
     if not dest_path.exists():
         shutil.copy2(source_path, dest_path)
-        print(f'  ✓ Copied to {dir_name}/')
+        print(f"  ✓ Copied to {dir_name}/")
     
     try:
         with Image.open(source_path) as img:
@@ -89,7 +84,7 @@ for dir_name, source_file in directories.items():
                     new_height = size
                     filename = f'dvipicon{size}.webp'
                 else:
-                    # Regular image - maintain aspect
+                    # Regular image
                     if size > original_width:
                         continue
                     ratio = size / original_width
@@ -110,41 +105,41 @@ for dir_name, source_file in directories.items():
                     'filename': filename
                 })
                 
-                print(f'  ✓ {filename} ({new_width}x{new_height})')
+                print(f"  ✓ {filename} ({new_width}x{new_height})")
             
             all_generated[dir_name] = generated
             
     except Exception as e:
-        print(f'  ❌ Error: {e}')
+        print(f"  ❌ Error: {e}")
 
-print('\\n✅ All images generated!')
+print("\n✅ All images generated!")
 
 # Save manifest
 with open('image-manifest.json', 'w') as f:
     json.dump({
         'generated': all_generated,
-        'timestamp': '$(date -Iseconds)'
+        'timestamp': 'generated'
     }, f, indent=2)
 
-print('📄 Manifest saved')
-"
+print("📄 Manifest saved: image-manifest.json")
+SCRIPT_EOF
     
-    - name: Generate HTML
+    - name: Run image generation
+      run: python3 generate.py
+    
+    - name: Create HTML script
       run: |
-        echo "🛠️ Generating HTML..."
-        
-        python3 -c "
+        cat << 'HTML_EOF' > generate_html.py
 from pathlib import Path
-import json
 
-print('Creating HTML snippets...')
+print("🛠️ Generating HTML...")
 
 Path('sizes').mkdir(exist_ok=True)
 
 directories = ['dvip1', 'dvip2', 'dvip3', 'dvip4', 'dvipicon']
 
 for dir_name in directories:
-    print(f'\\n📁 {dir_name}')
+    print(f"\n📁 {dir_name}")
     
     dir_path = Path(dir_name)
     if not dir_path.exists():
@@ -192,36 +187,36 @@ for dir_name in directories:
     # Create HTML
     if dir_name == 'dvipicon':
         html = f'''<img 
-    src=\"/{dir_name}/{original}\" 
-    srcset=\"{', '.join(srcset)}\"
-    sizes=\"(max-width: 48px) 48px, (max-width: 96px) 96px, 128px\"
-    alt=\"{dir_name} icon\"
-    width=\"512\"
-    height=\"512\"
-    loading=\"lazy\"
+    src="/{dir_name}/{original}" 
+    srcset="{', '.join(srcset)}"
+    sizes="(max-width: 48px) 48px, (max-width: 96px) 96px, 128px"
+    alt="{dir_name} icon"
+    width="512"
+    height="512"
+    loading="lazy"
 >'''
     else:
         html = f'''<img 
-    src=\"/{dir_name}/resized/{image_name}-640w.webp\" 
-    srcset=\"{', '.join(srcset)}\"
-    sizes=\"(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw\"
-    alt=\"{dir_name} image\"
-    width=\"1024\"
-    height=\"auto\"
-    loading=\"lazy\"
+    src="/{dir_name}/resized/{image_name}-640w.webp" 
+    srcset="{', '.join(srcset)}"
+    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    alt="{dir_name} image"
+    width="1024"
+    height="auto"
+    loading="lazy"
 >'''
     
     # Save HTML
     with open(f'sizes/{dir_name}-srcset.html', 'w') as f:
         f.write(html)
-    print(f'  ✓ HTML saved')
+    print(f"  ✓ HTML saved")
     
     # Create demo
     demo = f'''<!DOCTYPE html>
 <html>
 <head>
     <title>{dir_name}</title>
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {{ font-family: Arial; padding: 20px; }}
         img {{ max-width: 100%; }}
@@ -239,41 +234,39 @@ for dir_name in directories:
     with open(f'sizes/{dir_name}-demo.html', 'w') as f:
         f.write(demo)
 
-print('\\n✅ HTML generation complete!')
-"
+print("\n✅ HTML generation complete!")
+HTML_EOF
+    
+    - name: Run HTML generation
+      run: python3 generate_html.py
     
     - name: Show results
       run: |
-        echo "📊 RESULTS:"
+        echo "=== RESULTS ==="
         echo ""
-        echo "Images generated:"
+        echo "📁 Generated images:"
         for dir in dvip1 dvip2 dvip3 dvip4 dvipicon; do
           if [ -d "$dir/resized" ]; then
             count=$(ls -1 "$dir/resized/"*.webp 2>/dev/null | wc -l)
             echo "  $dir/resized/: $count images"
           fi
         done
-        
         echo ""
-        echo "HTML files:"
+        echo "📄 HTML files in sizes/:"
         ls -la sizes/*.html 2>/dev/null || echo "  No HTML files"
-        
-        echo ""
-        echo "Manifest:"
-        [ -f "image-manifest.json" ] && echo "  ✓ image-manifest.json" || echo "  ✗ No manifest"
     
-    - name: Commit changes
+    - name: Commit and push
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         
-        git add .
+        git add dvip1/resized/* dvip2/resized/* dvip3/resized/* dvip4/resized/* dvipicon/resized/* sizes/* image-manifest.json 2>/dev/null || true
         
-        if ! git diff --cached --quiet; then
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
           git commit -m "🖼️ Auto-generated responsive images"
           git push
-        else
-          echo "No changes to commit"
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
