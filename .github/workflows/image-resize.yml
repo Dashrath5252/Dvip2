@@ -1,0 +1,42 @@
+name: Auto Image Resize (WordPress Style)
+
+on:
+  push:
+    paths:
+      - "images/original/**"
+
+jobs:
+  resize:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Install ImageMagick
+      run: sudo apt-get update && sudo apt-get install imagemagick -y
+
+    - name: Generate images
+      run: |
+        mkdir -p images/generated
+
+        for img in images/original/*; do
+          filename=$(basename "$img")
+          name="${filename%.*}"
+
+          # Normal resized images (NO CROP – SEO friendly)
+          convert "$img" -resize 300 images/generated/${name}-300.webp
+          convert "$img" -resize 768 images/generated/${name}-768.webp
+          convert "$img" -resize 1200 images/generated/${name}-1200.webp
+
+          # Square cropped thumbnail (WordPress featured image style)
+          convert "$img" -thumbnail 300x300^ -gravity center -extent 300x300 images/generated/${name}-300square.webp
+        done
+
+    - name: Commit generated images
+      run: |
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        git add images/generated
+        git commit -m "Auto generate image sizes (WP style)" || echo "Nothing to commit"
+        git push
