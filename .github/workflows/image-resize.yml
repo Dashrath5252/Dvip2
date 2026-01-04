@@ -1,9 +1,12 @@
-name: Auto Image Resize (WordPress Style)
+name: Auto Image Resize (Root Images)
 
 on:
   push:
     paths:
-      - "images/original/**"
+      - "*.webp"
+      - "*.jpg"
+      - "*.jpeg"
+      - "*.png"
 
 jobs:
   resize:
@@ -20,16 +23,15 @@ jobs:
       run: |
         mkdir -p images/generated
 
-        for img in images/original/*; do
-          filename=$(basename "$img")
-          name="${filename%.*}"
+        for img in *.webp *.jpg *.jpeg *.png; do
+          [ -e "$img" ] || continue
 
-          # Normal resized images (NO CROP – SEO friendly)
+          name="${img%.*}"
+
           convert "$img" -resize 300 images/generated/${name}-300.webp
           convert "$img" -resize 768 images/generated/${name}-768.webp
           convert "$img" -resize 1200 images/generated/${name}-1200.webp
 
-          # Square cropped thumbnail (WordPress featured image style)
           convert "$img" -thumbnail 300x300^ -gravity center -extent 300x300 images/generated/${name}-300square.webp
         done
 
@@ -38,5 +40,5 @@ jobs:
         git config user.name "github-actions"
         git config user.email "actions@github.com"
         git add images/generated
-        git commit -m "Auto generate image sizes (WP style)" || echo "Nothing to commit"
+        git commit -m "Auto generate image sizes (root images)" || echo "Nothing to commit"
         git push
