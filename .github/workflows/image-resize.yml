@@ -1,6 +1,7 @@
 name: Auto Image Resize (Root Images)
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "*.webp"
